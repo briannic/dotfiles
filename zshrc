@@ -28,6 +28,11 @@ plugins=(brew colorize colored-man git osx zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
+# use prefix to specify gnu version of a core utility on OSX
+if [[ $OSTYPE != "linux-gnu" ]]; then
+  gnu_prefix=g
+fi
+
 # Use modern completion system
 autoload -U compinit
 compinit
@@ -79,6 +84,3 @@ pman () {
 # Docker config
 export automodeler_repo_dir=/Users/bnichols/civis
 export large_tmpdir=/Users/bnichols/civis/tmp
-export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2376
-export DOCKER_CERT_PATH=/Users/bnichols/.boot2docker/certs/boot2docker-vm
-export DOCKER_TLS_VERIFY=1
