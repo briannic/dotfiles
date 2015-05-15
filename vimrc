@@ -21,6 +21,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'sjl/gundo.vim'
 Plugin 'techlivezheng/vim-plugin-minibufexpl'
 Plugin 'thoughtbot/vim-rspec'
+Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-ruby/vim-ruby'
@@ -42,7 +43,8 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 """"""""""""""""""""""""""""
 set autoread
 set cmdheight=2
-set foldcolumn=1
+set foldmethod=syntax
+set nofoldenable
 set hid
 set history=700
 set ignorecase
@@ -70,6 +72,19 @@ set background=dark
 colorscheme Tomorrow-Night
 
 """"""""""""""""""""""""""""
+" TMUX "
+""""""""""""""""""""""""""""
+if exists('$ITERM_PROFILE')
+  if exists('$TMUX')
+    let &t_SI = "\<Esc>[3 q"
+    let &t_EI = "\<Esc>[0 q"
+  else
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  endif
+end
+
+""""""""""""""""""""""""""""
 " Files and backup "
 """"""""""""""""""""""""""""
 set nobackup
@@ -85,6 +100,7 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype python setlocal ts=4 sts=4 sw=4
 set backspace=eol,start,indent
@@ -124,7 +140,7 @@ map <leader>a :call RunAllSpecs()<cr>
 " Buffers "
 """"""""""""""""""""""""""""
 map <leader>bd :Bclose<cr>
-map <leader>ba :1,1000 bd!<cr>
+map <leader>ba :%bd!<cr>
 nmap <leader>bq :bp <BAR> bd #<CR>
 
 " Return to last edit position when opening files (You want this!)
@@ -162,6 +178,10 @@ let g:airline_symbols.whitespace = 'Ξ'
 """"""""""""""""""""""""""""
 " SYNTASTIC "
 """"""""""""""""""""""""""""
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -171,6 +191,7 @@ let g:syntastic_coffee_coffeelint_args = '--file ~/.cofeelint.json'
 let g:syntastic_haml_checkers = ['haml_lint']
 let g:syntastic_ruby_checkers = ['rubocop', 'mri']
 let g:syntastic_ruby_rubocop_exec = '/Users/bnichols/.rbenv/shims/ruby /Users/bnichols/.rbenv/shims/rubocop'
+let g:syntastic_loc_list_height = 3
 
 """"""""""""""""""""""""""""
 " CTRLP "

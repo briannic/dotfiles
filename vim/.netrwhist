@@ -1,10 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
-let g:netrw_dirhist_1='/Users/bnichols/civis/console/app/assets/javascripts/angular/factories'
-let g:netrw_dirhist_2='/Users/bnichols/civis/console/app/assets/javascripts/angular/services'
-let g:netrw_dirhist_3='/Users/bnichols/civis/console/app/assets/javascripts/angular/directives'
-let g:netrw_dirhist_4='/Users/bnichols/civis/console/app/views'
-let g:netrw_dirhist_5='/Users/bnichols/civis/console/app/views/jobs'
-let g:netrw_dirhist_6='/Users/bnichols/civis/console/app/views/jobs/traits'
-let g:netrw_dirhist_7='/Users/bnichols/civis/console/app/views/jobs'
-let g:netrw_dirhist_8='/Users/bnichols/.rbenv/versions/2.2.0/lib/ruby/gems/2.2.0/gems/docker-api-1.20.0'
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/Users/bnichols/civis/console'
+let g:netrw_dirhist_2='/Users/bnichols/civis'
+let g:netrw_dirhist_3='/Users/bnichols/civis/console'
+let g:netrw_dirhist_4='/Users/bnichols/civis'
+let g:netrw_dirhist_5='/Users/bnichols/civis/console/app/assets/javascripts/angular/directives'

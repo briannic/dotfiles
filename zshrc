@@ -55,6 +55,7 @@ export EDITOR='vim'
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 alias emacs='/usr/local/bin/emacs'
 alias zshrc='vim ~/.zshrc'
+alias vimrc='vim ~/.vimrc'
 alias ls='ls -lhaf -G'
 alias cat='pygmentize -O style=monokai -f console256 -g'
 alias sniff="ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
@@ -62,15 +63,7 @@ alias pullconsole="git pull && bundle && rake db:migrate"
 alias gitdiff='git icdiff'
 
 # ssh alias
-alias sshwebA='ssh console@a2.web.prod.console.us-east-1.civisanalytics.com'
-alias sshwebC='ssh console@c2.web.prod.console.us-east-1.civisanalytics.com'
-alias sshwebD='ssh console@d3.web.prod.console.us-east-1.civisanalytics.com'
-alias sshworkA='ssh console@a2.work.prod.console.us-east-1.civisanalytics.com'
-alias sshworkC='ssh console@c2.work.prod.console.us-east-1.civisanalytics.com'
-alias sshworkD='ssh console@d2.work.prod.console.us-east-1.civisanalytics.com'
-alias sshgateway='ssh -p 10022 bnichols@gateway.tgtg'
-alias sshstaging='ssh console@a1.web.staging.console.us-east-1.civisanalytics.com'
-alias sshpersonal='ssh margaret85@margaret85.webfactional.com'
+[[ -r ./alias.zsh ]] && . ./alias.zsh
 alias vim='/usr/local/opt/macvim/MacVim.app/Contents/MacOS/Vim'
 # zsh options
 # avoid rm * mistakes
@@ -84,3 +77,4 @@ pman () {
 # Docker config
 export automodeler_repo_dir=/Users/bnichols/civis
 export large_tmpdir=/Users/bnichols/civis/tmp
+eval $(boot2docker shellinit 2>/dev/null)
