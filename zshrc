@@ -28,10 +28,27 @@ plugins=(brew colorize colored-man git osx zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
-# use prefix to specify gnu version of a core utility on OSX
-if [[ $OSTYPE != "linux-gnu" ]]; then
-  gnu_prefix=g
-fi
+# vi mode customization
+bindkey -v
+bindkey -M viins 'jk' vi-cmd-mode
+bindkey '^R' history-incremental-search-backward
+
+vim_ins_mode="%{$fg_no_bold[yellow]%}[INS]%{$reset_color%}"
+vim_cmd_mode="%{$fg_no_bold[red]%}[CMD]%{$reset_color%}"
+vim_mode=$vim_ins_mode
+
+function zle-keymap-select {
+  vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
+  zle reset-prompt
+}
+zle -N zle-keymap-select
+
+function zle-line-finish {
+  vim_mode=$vim_ins_mode
+}
+zle -N zle-line-finish
+
+RPROMPT='${vim_mode}'
 
 # Use modern completion system
 autoload -U compinit
@@ -78,3 +95,4 @@ pman () {
 export automodeler_repo_dir=/Users/bnichols/civis
 export large_tmpdir=/Users/bnichols/civis/tmp
 eval $(boot2docker shellinit 2>/dev/null)
+
