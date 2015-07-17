@@ -26,7 +26,7 @@ export ZSH_THEME="ys"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(brew colorize colored-man git osx zsh-syntax-highlighting)
 
-source $ZSH/oh-my-zsh.sh
+source ~/.oh-my-zsh/oh-my-zsh.sh
 
 # vi mode customization
 bindkey -v
@@ -81,7 +81,6 @@ alias gitdiff='git icdiff'
 
 # ssh alias
 [[ -r ./alias.zsh ]] && . ./alias.zsh
-alias vim='/usr/local/opt/macvim/MacVim.app/Contents/MacOS/Vim'
 # zsh options
 # avoid rm * mistakes
 setopt RM_STAR_WAIT
