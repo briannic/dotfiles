@@ -24,7 +24,7 @@ export ZSH_THEME="ys"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew colorize colored-man git osx zsh-syntax-highlighting)
+plugins=(brew colorize colored-man git osx rand-quote tmux zsh-syntax-highlighting)
 
 source ~/.oh-my-zsh/oh-my-zsh.sh
 
@@ -80,7 +80,17 @@ alias pullconsole="git pull && bundle && rake db:migrate"
 alias gitdiff='git icdiff'
 
 # ssh alias
+<<<<<<< HEAD
 [[ -r ./alias.zsh ]] && . ./alias.zsh
+=======
+if [ -f ~/dotfiles/zshalias.zsh ]; then
+    source ~/dotfiles/zshalias.zsh
+else
+    print "404: ~/dotfiles/zshalias.zsh not found."
+fi
+
+alias vim='/usr/local/opt/macvim/MacVim.app/Contents/MacOS/Vim'
+>>>>>>> 71384fb4288c8e4560b16e3698be0ad9752325de
 # zsh options
 # avoid rm * mistakes
 setopt RM_STAR_WAIT
@@ -91,7 +101,5 @@ pman () {
 }
 
 # Docker config
-export automodeler_repo_dir=/Users/bnichols/civis
-export large_tmpdir=/Users/bnichols/civis/tmp
 eval $(boot2docker shellinit 2>/dev/null)
 
