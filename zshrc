@@ -28,28 +28,6 @@ plugins=(brew colorize colored-man git osx rand-quote tmux zsh-syntax-highlighti
 
 source ~/.oh-my-zsh/oh-my-zsh.sh
 
-# vi mode customization
-bindkey -v
-bindkey -M viins 'jk' vi-cmd-mode
-bindkey '^R' history-incremental-search-backward
-
-vim_ins_mode="%{$fg_no_bold[yellow]%}[INS]%{$reset_color%}"
-vim_cmd_mode="%{$fg_no_bold[red]%}[CMD]%{$reset_color%}"
-vim_mode=$vim_ins_mode
-
-function zle-keymap-select {
-  vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
-  zle reset-prompt
-}
-zle -N zle-keymap-select
-
-function zle-line-finish {
-  vim_mode=$vim_ins_mode
-}
-zle -N zle-line-finish
-
-RPROMPT='${vim_mode}'
-
 # Use modern completion system
 autoload -U compinit
 compinit

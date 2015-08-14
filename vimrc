@@ -48,6 +48,7 @@ set hid
 set history=700
 set ignorecase
 set incsearch
+set hlsearch
 set laststatus=2
 set lazyredraw
 set magic
