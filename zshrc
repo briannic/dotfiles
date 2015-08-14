@@ -26,29 +26,7 @@ export ZSH_THEME="flazz"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(brew colored-man git osx rand-quote tmux)
 
-source $ZSH/oh-my-zsh.sh
-
-# vi mode customization
-bindkey -v
-bindkey -M viins 'jk' vi-cmd-mode
-bindkey '^R' history-incremental-search-backward
-
-vim_ins_mode="%{$fg_no_bold[yellow]%}[INS]%{$reset_color%}"
-vim_cmd_mode="%{$fg_no_bold[red]%}[CMD]%{$reset_color%}"
-vim_mode=$vim_ins_mode
-
-function zle-keymap-select {
-  vim_mode="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
-  zle reset-prompt
-}
-zle -N zle-keymap-select
-
-function zle-line-finish {
-  vim_mode=$vim_ins_mode
-}
-zle -N zle-line-finish
-
-RPROMPT='${vim_mode}'
+source ~/.oh-my-zsh/oh-my-zsh.sh
 
 # Use modern completion system
 autoload -U compinit
@@ -80,13 +58,12 @@ alias pullconsole="git pull && bundle && rake db:migrate"
 alias gitdiff='git icdiff'
 
 # ssh alias
-if [ -f ~/dotfiles/zshalias.zsh ]; then
-    source ~/dotfiles/zshalias.zsh
-else
-    print "404: ~/dotfiles/zshalias.zsh not found."
-fi
+#if [ -f ~/dotfiles/zshalias.zsh ]; then
+#    source ~/dotfiles/zshalias.zsh
+#else
+#    print "404: ~/dotfiles/zshalias.zsh not found."
+#fi
 
-alias vim='/usr/local/opt/macvim/MacVim.app/Contents/MacOS/Vim'
 # zsh options
 # avoid rm * mistakes
 setopt RM_STAR_WAIT
