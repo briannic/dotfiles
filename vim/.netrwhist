@@ -1,11 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/Users/bnichols/elixir/civis'
-let g:netrw_dirhist_2='/Users/bnichols/civis/console'
-let g:netrw_dirhist_3='/Users/bnichols/civis/console/app'
-let g:netrw_dirhist_4='/Users/bnichols/civis/console/app/assets'
-let g:netrw_dirhist_5='/Users/bnichols/civis/console/app/assets/templates'
-let g:netrw_dirhist_6='/Users/bnichols/civis/console/app/assets/templates/components'
-let g:netrw_dirhist_7='/Users/bnichols/civis/console/app/assets/templates/components/models'
-let g:netrw_dirhist_8='/Users/bnichols/civis/console/app/assets/templates/components/models/wizard'
-let g:netrw_dirhist_9='/Users/bnichols/civis/console'
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/Users/bnichols/civis/console'

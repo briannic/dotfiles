@@ -12,9 +12,10 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'fatih/vim-go'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'ngmy/vim-rubocop'
+Plugin 'pangloss/vim-javascript'
 Plugin 'pbrisbin/vim-mkdir'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/syntastic'
@@ -48,6 +49,7 @@ set hid
 set history=700
 set ignorecase
 set incsearch
+set hlsearch
 set laststatus=2
 set lazyredraw
 set magic
@@ -102,6 +104,7 @@ autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype python setlocal ts=4 sts=4 sw=4
 autocmd Filetype scss setlocal ts=2 sts=2 sw=2
 autocmd Filetype css setlocal ts=2 sts=2 sw=2
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
