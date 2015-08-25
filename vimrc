@@ -69,7 +69,7 @@ set clipboard=unnamed
 syntax enable
 set encoding=utf8
 set background=dark
-colorscheme hybrid
+colorscheme solarized
 
 """"""""""""""""""""""""""""
 " TMUX "
