@@ -7,6 +7,7 @@ call vundle#begin()
 Plugin 'airblade/vim-gitgutter'
 Plugin 'bling/vim-airline'
 Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'chriskempson/base16-vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'fatih/vim-go'
@@ -23,6 +24,7 @@ Plugin 'skalnik/vim-vroom'
 Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-vinegar'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'Yggdroot/indentLine'
 
@@ -69,7 +71,7 @@ set clipboard=unnamed
 syntax enable
 set encoding=utf8
 set background=dark
-colorscheme solarized
+colorscheme Tomorrow-Night
 
 """"""""""""""""""""""""""""
 " TMUX "
@@ -139,6 +141,10 @@ map <leader>l :call RunLastSpec()<cr>
 map <leader>a :call RunAllSpecs()<cr>
 :nnoremap <Tab> :bnext<CR>
 :nnoremap <S-Tab> :bprevious<CR>
+xnoremap <  <gv
+xnoremap >  >gv
+
+nnoremap <leader>h :noh<cr>
 
 """"""""""""""""""""""""""""
 " Buffers "
@@ -154,6 +160,12 @@ autocmd BufReadPost *
    \ endif
 " Remember info about open buffers on close
 set viminfo^=%
+
+""""""""""""""""""""""""""""
+" GIT GUTTER "
+""""""""""""""""""""""""""""
+" Conflicts with `,h` key
+let g:gitgutter_map_keys = 0
 
 """"""""""""""""""""""""""""
 " Tagbar "
