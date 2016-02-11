@@ -33,9 +33,8 @@ alias pullconsole="git pull && bundle && rake db:migrate"
 alias gitdiff='git icdiff'
 alias gst='git status'
 
-# ssh alias
-#if [ -f ~/dotfiles/zshalias.zsh ]; then
-#    source ~/dotfiles/zshalias.zsh
-#else
-#    print "404: ~/dotfiles/zshalias.zsh not found."
-#fi
+# Nicer git diffs
+# https://github.com/stevemao/diff-so-fancy
+if ! type "diff-highlight" > /dev/null; then
+  git config --global core.pager "diff-highlight | diff-so-fancy | less --tabs=1,5 -R"
+fi

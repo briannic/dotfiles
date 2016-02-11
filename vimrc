@@ -5,7 +5,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'airblade/vim-gitgutter'
-Plugin 'bling/vim-airline'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'chriskempson/base16-vim'
 Plugin 'christoomey/vim-tmux-navigator'
@@ -26,6 +25,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-vinegar'
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Yggdroot/indentLine'
 
 call vundle#end()
@@ -56,6 +57,8 @@ set laststatus=2
 set lazyredraw
 set magic
 set mat=2
+set re=1
+set foldmethod=indent
 set notimeout ttimeout ttimeoutlen=200
 set number
 set pastetoggle=<F2>
@@ -64,6 +67,7 @@ set showmatch
 set smartcase
 set wildmenu
 set clipboard=unnamed
+set conceallevel=0
 
 """"""""""""""""""""""""""""
 " COLORS AND FONT "
@@ -122,7 +126,7 @@ autocmd BufWrite * :call DeleteTrailingWS()
 """"""""""""""""""""""""""""
 :imap jk <Esc>
 map <space> /
-map <leader><space> :Ag
+map <leader><space> :Ag!
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
