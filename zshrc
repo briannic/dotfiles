@@ -38,3 +38,14 @@ alias gst='git status'
 if ! type "diff-highlight" > /dev/null; then
   git config --global core.pager "diff-highlight | diff-so-fancy | less --tabs=1,5 -R"
 fi
+
+# VIM Mode Keybindings
+bindkey -v
+
+# Adding preferred shortcut to enter Normal mode
+bindkey jk vi-cmd-mode
+
+# Common operations
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^r' history-incremental-search-backward
