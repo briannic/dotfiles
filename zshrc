@@ -12,13 +12,21 @@ fi
 
 # Customize to your needs...
 # source ~/dotfiles/zshalias.zsh
+export TERM='xterm-256color'
+
+# docker-machine setup
+eval "$(docker-machine env default)"
 
 # rbenv init
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init - zsh)"
-
+# Go setup
+export GOPATH=$HOME/go
+export PATH="$HOME/go/bin:$PATH"
+# Python Setup
+export PATH="$HOME/miniconda3/bin:$PATH"
 # EDITOR
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # aliases
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
@@ -49,3 +57,8 @@ bindkey jk vi-cmd-mode
 bindkey '^P' up-history
 bindkey '^N' down-history
 bindkey '^r' history-incremental-search-backward
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+source "$HOME/.secrets"
+source activate civis

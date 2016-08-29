@@ -1,24 +1,33 @@
-set nocompatible
-filetype off
+
+" set nocompatible
+" filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'airblade/vim-gitgutter'
 Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'chase/vim-ansible-yaml'
 Plugin 'chriskempson/base16-vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'fatih/vim-go'
 Plugin 'gmarik/Vundle.vim'
+Plugin 'godlygeek/tabular'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
+Plugin 'mxw/vim-jsx'
 Plugin 'ngmy/vim-rubocop'
+Plugin 'nvie/vim-flake8'
 Plugin 'pangloss/vim-javascript'
 Plugin 'pbrisbin/vim-mkdir'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'rakr/vim-two-firewatch'
 Plugin 'rking/ag.vim'
-Plugin 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
+Plugin 'lambdatoast/elm.vim'
+Plugin 'benekastah/neomake'
 Plugin 'skalnik/vim-vroom'
 Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-fugitive'
@@ -68,14 +77,40 @@ set smartcase
 set wildmenu
 set clipboard=unnamed
 set conceallevel=0
+set t_Co=256
 
 """"""""""""""""""""""""""""
 " COLORS AND FONT "
 """"""""""""""""""""""""""""
+if (has("termguicolors"))
+  set termguicolors
+endif
 syntax enable
-set encoding=utf8
+"set encoding=utf8
+colorscheme two-firewatch
+let g:airline_theme='twofirewatch'
 set background=dark
-colorscheme Tomorrow-Night
+
+""""""""""""""""""""""""""""
+" Neovim "
+""""""""""""""""""""""""""""
+" Mapping for terminal mode
+if has('nvim')
+  tnoremap jk <C-\><C-n>
+  tnoremap <C-h> <C-\><C-n><C-w>h
+  tnoremap <C-j> <C-\><C-n><C-w>j
+  tnoremap <C-k> <C-\><C-n><C-w>k
+  tnoremap <C-l> <C-\><C-n><C-w>l
+  map <leader>t :terminal<CR>
+endif
+
+""""""""""""""""""""""""""""
+" Neomake "
+""""""""""""""""""""""""""""
+autocmd! BufWritePost * Neomake
+let g:neomake_open_list = 2
+let g:neomake_list_height = 3
+let g:neomake_python_flake8_maker = { 'args': ['--ignore=E501,E261,E262'], }
 
 """"""""""""""""""""""""""""
 " TMUX "
@@ -96,6 +131,11 @@ end
 set nobackup
 set nowb
 set noswapfile
+
+""""""""""""""""""""""""""""
+" Markdown "
+""""""""""""""""""""""""""""
+let g:vim_markdown_folding_disabled = 1
 
 """"""""""""""""""""""""""""
 " Text, tab and indent "
@@ -120,6 +160,8 @@ func! DeleteTrailingWS()
     exe "normal `z"
 endfunc
 autocmd BufWrite * :call DeleteTrailingWS()
+autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+autocmd BufNewFile,BufRead *.tag setlocal ft=javascript
 
 """"""""""""""""""""""""""""
 " Key Bindings "
@@ -140,7 +182,6 @@ nnoremap <S-K> {
 nmap <leader>e :Ex
 nmap <leader>y :TagbarToggle<CR>
 nnoremap <leader>u :GundoToggle<CR>
-map <leader>t :call RunCurrentSpecFile()<cr>
 map <leader>l :call RunLastSpec()<cr>
 map <leader>a :call RunAllSpecs()<cr>
 :nnoremap <Tab> :bnext<CR>
@@ -216,27 +257,26 @@ let g:airline_symbols.whitespace = 'Ξ'
 """"""""""""""""""""""""""""
 " SYNTASTIC "
 """"""""""""""""""""""""""""
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
-let g:syntastic_coffee_coffeelint_args = '--file ~/.cofeelint.json'
-let g:syntastic_haml_checkers = ['haml_lint']
-let g:syntastic_ruby_checkers = ['rubocop', 'mri']
-let g:syntastic_ruby_rubocop_exec = '/Users/bnichols/.rbenv/shims/ruby /Users/bnichols/.rbenv/shims/rubocop'
-let g:syntastic_loc_list_height = 3
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_coffee_coffeelint_args = '--file ~/.cofeelint.json'
+"let g:syntastic_haml_checkers = ['haml_lint']
+"let g:syntastic_ruby_checkers = ['rubocop', 'mri']
+"let g:syntastic_ruby_rubocop_exec = '/Users/bnichols/.rbenv/shims/ruby /Users/bnichols/.rbenv/shims/rubocop'
+"let g:syntastic_loc_list_height = 3
 
 """"""""""""""""""""""""""""
 " CTRLP "
 """"""""""""""""""""""""""""
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_working_path_mode = 0
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden --ignore .git --ignore .DS_Store -g ""'
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden --ignore node_modules --ignore .git --ignore .DS_Store -g ""'
 
 """"""""""""""""""""""""""""
 " vroom "
