@@ -14,9 +14,6 @@ fi
 # source ~/dotfiles/zshalias.zsh
 export TERM='xterm-256color'
 
-# docker-machine setup
-eval "$(docker-machine env default)"
-
 # rbenv init
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init - zsh)"
@@ -35,7 +32,7 @@ alias zshrc='vim ~/.zshrc'
 alias vimrc='vim ~/.vimrc'
 #alias vim='nvim'
 alias ls='ls -lhaf -G'
-alias cat='pygmentize -O style=monokai -f console256 -g'
+#alias cat='pygmentize -O style=monokai -f console256 -g'
 alias sniff="ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
 alias pullconsole="git pull && bundle && rake db:migrate"
 alias gitdiff='git icdiff'
@@ -43,9 +40,9 @@ alias gst='git status'
 
 # Nicer git diffs
 # https://github.com/stevemao/diff-so-fancy
-if ! type "diff-highlight" > /dev/null; then
-  git config --global core.pager "diff-highlight | diff-so-fancy | less --tabs=1,5 -R"
-fi
+#if ! type "diff-highlight" > /dev/null; then
+#  git config --global core.pager "diff-highlight | diff-so-fancy | less --tabs=1,5 -R"
+#fi
 
 # VIM Mode Keybindings
 bindkey -v
@@ -61,4 +58,7 @@ bindkey '^r' history-incremental-search-backward
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 source "$HOME/.secrets"
-source activate civis
+source activate civis > /dev/null 2>&1
+
+export NVM_DIR="/Users/civisemployee/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
