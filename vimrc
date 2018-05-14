@@ -9,16 +9,17 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'benekastah/neomake'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'chase/vim-ansible-yaml'
-Plugin 'chriskempson/base16-vim'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'ctrlpvim/ctrlp.vim'
+" Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'elzr/vim-json'
 Plugin 'fatih/vim-go'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'isRuslan/vim-es6'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'lambdatoast/elm.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'mxw/vim-jsx'
 Plugin 'ngmy/vim-rubocop'
@@ -26,8 +27,6 @@ Plugin 'nvie/vim-flake8'
 Plugin 'pangloss/vim-javascript'
 Plugin 'pbrisbin/vim-mkdir'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'rakr/vim-one'
-Plugin 'rakr/vim-two-firewatch'
 Plugin 'rking/ag.vim'
 Plugin 'skalnik/vim-vroom'
 Plugin 'tpope/vim-fugitive'
@@ -112,10 +111,10 @@ endif
 autocmd! BufWritePost * Neomake
 let g:neomake_open_list = 2
 let g:neomake_list_height = 3
-let g:neomake_python_flake8_maker = { 'args': ['--ignore=E261,E262 --max-line-length=120'], }
 let g:neomake_python_enabled_makers = ['flake8']
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
+let g:neomake_coffeescript_enabled_makers = ['coffeelint']
 
 """"""""""""""""""""""""""""
 " TMUX "
@@ -279,9 +278,15 @@ let g:airline_symbols.whitespace = 'Ξ'
 """"""""""""""""""""""""""""
 " CTRLP "
 """"""""""""""""""""""""""""
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden --ignore node_modules --ignore .git --ignore .DS_Store -g ""'
+" let g:ctrlp_working_path_mode = 'ra'
+" let g:ctrlp_working_path_mode = 0
+" let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden --ignore node_modules --ignore .git --ignore .DS_Store -g ""'
+
+""""""""""""""""""""""""""""
+" FZF "
+""""""""""""""""""""""""""""
+nnoremap <C-p> :GFiles<cr>
+nnoremap <C-b> :Buffers<cr>
 
 """"""""""""""""""""""""""""
 " vroom "
@@ -299,3 +304,8 @@ let g:indentLine_color_term = 238
 """"""""""""""""""""""""""""
 let g:go_doc_keywordprg_enabled = 0
 
+"""""""""""""""""""""""""""
+" vim-json"
+""""""""""""""""""""""""""""
+let g:vim_json_syntax_conceal = 0
+let g:indentLine_noConcealCursor=""

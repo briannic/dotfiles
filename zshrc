@@ -23,7 +23,8 @@ export PATH="$HOME/go/bin:$PATH"
 # Python Setup
 export PATH="$HOME/miniconda3/bin:$PATH"
 # EDITOR
-export EDITOR='nvim'
+export VISUAL="/usr/local/bin/vim"
+export EDITOR="$VISUAL"
 
 # aliases
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
@@ -44,6 +45,9 @@ alias gst='git status'
 #  git config --global core.pager "diff-highlight | diff-so-fancy | less --tabs=1,5 -R"
 #fi
 
+# Searching
+export FZF_DEFAULT_COMMAND='rg --files --hidden --smartcase --glob "!.git/*"'
+
 # VIM Mode Keybindings
 bindkey -v
 
@@ -62,3 +66,5 @@ source activate civis > /dev/null 2>&1
 
 export NVM_DIR="/Users/civisemployee/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
