@@ -30,6 +30,10 @@ bindkey '^r' history-incremental-search-backward
 # Vim Mode Keybindings
 bindkey -v
 
+# Go settings
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
 # NVM setup
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
