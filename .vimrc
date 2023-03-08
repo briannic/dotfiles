@@ -10,6 +10,8 @@
 call plug#begin()
 
 Plug 'fatih/vim-go'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'maralla/completor.vim'
 
 call plug#end()
 
@@ -40,7 +42,7 @@ autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 
 
 """"""""""""""""""""""""""""
-" Copy Paste Settings "
+" Copy Paste Settings      "
 """"""""""""""""""""""""""""
 set clipboard=unnamedplus
 
@@ -50,3 +52,10 @@ set clipboard=unnamedplus
 """"""""""""""""""""""""""""
 :imap jk <Esc>
 
+
+""""""""""""""""""""""""""""
+" vim-go settings          "
+""""""""""""""""""""""""""""
+" Enable lsp for go by using gopls
+let g:completor_filetype_map = {}
+let g:completor_filetype_map.go = {'ft': 'lsp',  'cmd': 'gopls -remote=auto'}"
