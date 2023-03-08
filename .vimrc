@@ -1,7 +1,8 @@
 """"""""""""""""""""""""""""
 " General                  "
 """"""""""""""""""""""""""""
-:filetype on
+syntax on
+:filetype plugin indent on
 
 
 """"""""""""""""""""""""""""
@@ -48,7 +49,7 @@ set clipboard=unnamedplus
 
 
 """"""""""""""""""""""""""""
-" Key Bindings "
+" General Key Bindings "
 """"""""""""""""""""""""""""
 :imap jk <Esc>
 
@@ -59,3 +60,19 @@ set clipboard=unnamedplus
 " Enable lsp for go by using gopls
 let g:completor_filetype_map = {}
 let g:completor_filetype_map.go = {'ft': 'lsp',  'cmd': 'gopls -remote=auto'}"
+
+
+""""""""""""""""""""""""""""
+" vim-go Key Bindings      "
+""""""""""""""""""""""""""""
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage-toggle)
+au FileType go nmap <Leader>e <Plug>(go-rename)
+au FileType go nmap <Leader>s <Plug>(go-implements)
+au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>ae <Plug>(go-alternate-edit)
+au FileType go nmap <Leader>av <Plug>(go-alternate-vertical)
