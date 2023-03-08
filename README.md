@@ -1,15 +1,14 @@
 My dotfiles
 ===========
 
-Customizes `zsh`, `tmux`, `vim`, and others 
+Collection of configuration files for my preferred tools in a Linux-like system 
 
-Requirements
+Preferred Tools
 ------------
 
-Set zsh as your login shell:
-```    
-    chsh -s $(which zsh)
-```
+* [zsh](https://www.zsh.org/) shell and the [prezto](https://github.com/sorin-ionescu/prezto) framework
+* [tmux](https://github.com/tmux/tmux/wiki) terminal multiplexer
+* [vim](https://github.com/vim/vim) text editor (look to upgrade past v8.2.x)
 
 Usage
 -----
