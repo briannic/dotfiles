@@ -10,9 +10,16 @@ syntax on
 """"""""""""""""""""""""""""
 call plug#begin()
 
-Plug 'fatih/vim-go'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'dense-analysis/ale'
+Plug 'fatih/vim-go'
+Plug 'leafgarland/typescript-vim'
+Plug 'madox2/vim-ai'
 Plug 'maralla/completor.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'patstockwell/vim-monokai-tasty'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-ruby/vim-ruby'
 
 call plug#end()
 
@@ -20,9 +27,8 @@ call plug#end()
 """"""""""""""""""""""""""""
 " Color                    "
 """"""""""""""""""""""""""""
-colorscheme molokai
-let g:molokai_original=1
-let g:rehash256=1
+colorscheme vim-monokai-tasty 
+let g:airline_theme='monokai_tasty'
 
 
 """"""""""""""""""""""""""""
