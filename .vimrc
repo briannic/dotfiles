@@ -3,6 +3,7 @@
 """"""""""""""""""""""""""""
 syntax on
 :filetype plugin indent on
+:set number
 
 
 """"""""""""""""""""""""""""
@@ -58,6 +59,8 @@ set clipboard=unnamedplus
 " General Key Bindings "
 """"""""""""""""""""""""""""
 :imap jk <Esc>
+:map <leader>n :bprevious<CR>
+:map <leader>m :bnext<CR>
 
 
 """"""""""""""""""""""""""""
