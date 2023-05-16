@@ -12,6 +12,7 @@ syntax on
 call plug#begin()
 
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dense-analysis/ale'
 Plug 'fatih/vim-go'
 Plug 'leafgarland/typescript-vim'
