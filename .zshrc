@@ -43,9 +43,14 @@ export NVM_DIR="$HOME/.nvm"
 export PATH=/home/brian/.local/bin:$PATH
 export PATH=$PATH:/usr/local/go/bin
 
+# Set the SSH identities to load into the agent.
+zstyle ':prezto:module:ssh:load' identities 'id_ed25519'
+
+
 # Autocomplete
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
 
 # Import Secrets 
 source ~/.secrets
+
